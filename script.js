@@ -1,13 +1,16 @@
-const btnEle = document.getElementById("start");
+// const btnEle = document.getElementById("start");
 
-btnEle.addEventListener("click", initiateAudio);
+// btnEle.addEventListener("click", initiateAudio);
 
-function initiateAudio() {
+const playPauseButton = document.querySelector(".play-pause");
+
+playPauseButton.addEventListener("click", togglePlayPause);
+
+function togglePlayPause() {
   const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   const audioElement = document.querySelector("audio");
   const canvasElement = document.querySelector("canvas");
   const canvasCtx = canvasElement.getContext("2d");
-  const playPauseButton = document.querySelector(".play-pause");
   const seekbar = document.querySelector(".seekbar");
   const volumeBar = document.querySelector(".volume");
 
@@ -30,8 +33,6 @@ replay
     isReplay: false,
     isPaused: true,
   };
-
-  playPauseButton.addEventListener("click", togglePlayPause);
 
   audioElement.addEventListener("timeupdate", setProgress);
   audioElement.addEventListener("ended", onEnd);
@@ -70,7 +71,6 @@ replay
   }
   draw();
 
-  function togglePlayPause() {
     audioCtx.resume().then(() => {
       if (audioState.isPaused) {
         playPauseButton.innerHTML = pauseIcon;
@@ -89,7 +89,6 @@ replay
 
       audioState.isPaused = !audioState.isPaused;
     });
-  }
 
   function setProgress() {
     seekbar.value = audioElement.currentTime;
