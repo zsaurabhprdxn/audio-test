@@ -1,5 +1,5 @@
 
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const audioCtx = new AudioContext();
   const audioElement = document.querySelector("audio");
   const canvasElement = document.querySelector("canvas");
   const canvasCtx = canvasElement.getContext("2d");
