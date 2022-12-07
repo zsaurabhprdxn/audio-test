@@ -1,5 +1,9 @@
+const btnEle = document.getElementById("start");
 
-  const audioCtx = new AudioContext();
+btnEle.addEventListener("click", initiateAudio);
+
+function initiateAudio() {
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   const audioElement = document.querySelector("audio");
   const canvasElement = document.querySelector("canvas");
   const canvasCtx = canvasElement.getContext("2d");
@@ -107,3 +111,4 @@ replay
   function onVolumeSeek(evt) {
     audioElement.volume = evt.target.value / 100;
   }
+}
