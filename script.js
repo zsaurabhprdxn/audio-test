@@ -67,6 +67,9 @@ replay
   draw();
 
   function togglePlayPause() {
+
+    audioElement.muted = false;
+
     audioCtx.resume().then(() => {
       if (audioState.isPaused) {
         playPauseButton.innerHTML = pauseIcon;
